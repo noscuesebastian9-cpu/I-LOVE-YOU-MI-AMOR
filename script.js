@@ -1,31 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    /* ==============================
+       ELEMENTOS
+    ============================== */
+
     const carta = document.getElementById("carta");
     const mensaje = document.getElementById("mensaje");
 
-    console.log("JavaScript funcionando");
 
-
-    /* =========================
+    /* ==============================
        ABRIR CARTA
-       ========================= */
+    ============================== */
 
     carta.addEventListener("click", function () {
 
-        console.log("Carta abierta ❤️");
-
-        // Esconder carta
+        // Ocultar carta
         carta.style.display = "none";
 
-        // Mostrar mensaje
+        // Mostrar foto + mensaje
         mensaje.style.display = "flex";
+
+        // Evitar desplazamiento
+        document.body.style.overflow = "hidden";
 
     });
 
 
-    /* =========================
+    /* ==============================
        CORAZONES Y ROSAS
-       ========================= */
+    ============================== */
 
     const simbolos = [
         "❤️",
@@ -34,35 +37,43 @@ document.addEventListener("DOMContentLoaded", function () {
         "💕",
         "💓",
         "💘",
+        "💝",
         "🌹"
     ];
 
 
-    function crearElementoNeon() {
+    function crearDecoracion() {
 
         const elemento = document.createElement("div");
 
-        elemento.className = "neon-flotante";
+        elemento.classList.add("decoracion");
 
-        elemento.textContent =
+
+        // Elegir corazón o rosa aleatoriamente
+        const simbolo =
             simbolos[
                 Math.floor(
                     Math.random() * simbolos.length
                 )
             ];
 
+        elemento.textContent = simbolo;
 
-        // Posición horizontal
+
+        // Posición horizontal aleatoria
         elemento.style.left =
             Math.random() * 100 + "vw";
 
 
-        // Tamaño
+        // Tamaño aleatorio
+        const tamaño =
+            Math.random() * 25 + 20;
+
         elemento.style.fontSize =
-            Math.random() * 20 + 20 + "px";
+            tamaño + "px";
 
 
-        // Velocidad
+        // Duración aleatoria
         const duracion =
             Math.random() * 5 + 5;
 
@@ -70,10 +81,11 @@ document.addEventListener("DOMContentLoaded", function () {
             duracion + "s";
 
 
+        // Agregar a la página
         document.body.appendChild(elemento);
 
 
-        // Eliminar después
+        // Eliminar cuando termine
         setTimeout(function () {
 
             elemento.remove();
@@ -83,24 +95,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* Crear elementos continuamente */
+    /* ==============================
+       CREACIÓN CONTINUA
+    ============================== */
 
     setInterval(function () {
 
-        crearElementoNeon();
+        crearDecoracion();
 
-    }, 400);
+    }, 350);
 
 
-    /* Crear algunos inmediatamente */
+    /* ==============================
+       DECORACIONES INICIALES
+    ============================== */
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 12; i++) {
 
         setTimeout(function () {
 
-            crearElementoNeon();
+            crearDecoracion();
 
-        }, i * 300);
+        }, i * 250);
 
     }
 
