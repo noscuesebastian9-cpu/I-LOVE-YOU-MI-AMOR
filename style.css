@@ -96,11 +96,7 @@ body {
 
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.30),
-            rgba(0, 0, 0, 0.60)
-        );
+    background: rgba(0, 0, 0, 0.35);
 }
 
 
@@ -143,7 +139,7 @@ body {
     position: relative;
 
     z-index: 10;
-
+    text-aling: center;
     text-shadow:
         0 0 5px white,
         0 0 10px #ff1493,
