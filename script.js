@@ -1,63 +1,131 @@
 ```javascript
 /* =========================================
-   ABRIR LA CARTA
+   ABRIR LA CARTA 💌
    ========================================= */
 
 function abrirCarta() {
 
+    // Buscar la carta
     const carta = document.querySelector(".carta");
+
+    // Buscar el mensaje
     const mensaje = document.getElementById("mensaje");
 
-    // Ocultar la carta
+
+    // =====================================
+    // OCULTAR LA CARTA
+    // =====================================
+
     if (carta) {
         carta.style.display = "none";
     }
 
-    // Mostrar la foto y el mensaje
+
+    // =====================================
+    // MOSTRAR EL MENSAJE
+    // =====================================
+
     if (mensaje) {
         mensaje.style.display = "flex";
     }
 
-    // Evitar desplazamiento
+
+    // =====================================
+    // EVITAR DESPLAZAMIENTO
+    // =====================================
+
     document.body.style.overflow = "hidden";
 }
 
 
 /* =========================================
-   CORAZONES Y ROSAS NEÓN
+   CORAZONES Y ROSAS ❤️🌹
    ========================================= */
 
-const simbolos = ["❤️", "💗", "💖", "💕", "🌹"];
+const simbolos = [
+    "❤️",
+    "💗",
+    "💖",
+    "💕",
+    "💓",
+    "💘",
+    "🌹"
+];
+
+
+/* =========================================
+   CREAR ELEMENTO FLOTANTE
+   ========================================= */
 
 function crearElementoNeon() {
 
+    // Crear elemento
     const elemento = document.createElement("div");
 
+    // Agregar clase CSS
     elemento.classList.add("neon-flotante");
 
-    // Elegir corazón o rosa aleatoriamente
-    elemento.innerHTML =
+
+    // Elegir símbolo aleatorio
+    const simbolo =
         simbolos[Math.floor(Math.random() * simbolos.length)];
 
-    // Posición horizontal aleatoria
-    elemento.style.left = Math.random() * 100 + "vw";
+    elemento.textContent = simbolo;
 
-    // Tamaño aleatorio
-    const tamaño = Math.random() * 20 + 18;
-    elemento.style.fontSize = tamaño + "px";
 
-    // Duración aleatoria
-    const duracion = Math.random() * 5 + 5;
-    elemento.style.animationDuration = duracion + "s";
+    // =====================================
+    // POSICIÓN ALEATORIA
+    // =====================================
 
-    // Pequeña variación de retraso
-    elemento.style.animationDelay = Math.random() * 2 + "s";
+    elemento.style.left =
+        Math.random() * 100 + "vw";
+
+
+    // =====================================
+    // TAMAÑO ALEATORIO
+    // =====================================
+
+    const tamaño =
+        Math.random() * 20 + 20;
+
+    elemento.style.fontSize =
+        tamaño + "px";
+
+
+    // =====================================
+    // VELOCIDAD ALEATORIA
+    // =====================================
+
+    const duracion =
+        Math.random() * 5 + 5;
+
+    elemento.style.animationDuration =
+        duracion + "s";
+
+
+    // =====================================
+    // RETRASO ALEATORIO
+    // =====================================
+
+    elemento.style.animationDelay =
+        Math.random() * 1.5 + "s";
+
+
+    // =====================================
+    // AGREGAR A LA PÁGINA
+    // =====================================
 
     document.body.appendChild(elemento);
 
-    // Eliminar después de la animación
+
+    // =====================================
+    // ELIMINAR DESPUÉS DE LA ANIMACIÓN
+    // =====================================
+
     setTimeout(() => {
+
         elemento.remove();
+
     }, (duracion + 2) * 1000);
 }
 
@@ -66,11 +134,25 @@ function crearElementoNeon() {
    CREACIÓN CONTINUA
    ========================================= */
 
-setInterval(crearElementoNeon, 350);
+// Crear un nuevo corazón/rosa cada 350 ms
+
+setInterval(() => {
+
+    crearElementoNeon();
+
+}, 350);
 
 
-/* Crear algunos inmediatamente */
+/* =========================================
+   CREAR ALGUNOS AL INICIO
+   ========================================= */
+
 for (let i = 0; i < 10; i++) {
-    setTimeout(crearElementoNeon, i * 250);
+
+    setTimeout(() => {
+
+        crearElementoNeon();
+
+    }, i * 250);
 }
 ```
