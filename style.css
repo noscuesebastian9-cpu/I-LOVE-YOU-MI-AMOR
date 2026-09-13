@@ -90,7 +90,7 @@ body {
             rgba(0, 0, 0, 0.30),
             rgba(0, 0, 0, 0.55)
         ),
-        url("img/sofi.jpg");
+        url("sofi.jpg");
 
     background-size: cover;
     background-position: center;
