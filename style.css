@@ -135,3 +135,15 @@ button:hover {
     }
 
 }
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+    .container,
+    .card,
+    .message-box {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+        margin: 20px auto;
+        box-sizing: border-box;
+    }
+}
