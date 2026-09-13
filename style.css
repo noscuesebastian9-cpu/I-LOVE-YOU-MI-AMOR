@@ -80,9 +80,9 @@ button:hover {
 }
 
 #mensajeEspecial {
-    margin-top: 18px;
+    margin-top: 12px;
 
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 
     animation: aparecer 1s ease;
