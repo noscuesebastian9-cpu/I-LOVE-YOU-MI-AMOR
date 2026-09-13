@@ -1,35 +1,203 @@
-function mostrarMensaje() {
+/* =========================================
+   CONFIGURACIÓN GENERAL
+   ========================================= */
 
-    const mensaje = document.getElementById("mensajeEspecial");
-
-    mensaje.innerHTML =
-        "Mi amor... eres lo mas increible que me ha pasado en la vida y no te llegas a imaginar lo mucho que me importas, te amo";
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-function crearCorazon() {
-
-    const contenedor = document.querySelector(".corazones");
-
-    const corazon = document.createElement("div");
-
-    corazon.classList.add("corazon");
-
-    corazon.innerHTML = "❤️";
-
-    corazon.style.left =
-        Math.random() * 100 + "%";
-
-    corazon.style.animationDuration =
-        (Math.random() * 3 + 4) + "s";
-
-    contenedor.appendChild(corazon);
-
-    setTimeout(() => {
-
-        corazon.remove();
-
-    }, 7000);
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
-setInterval(crearCorazon, 500);
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+
+    /* Fondo inicial */
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================
+   CARTA 💌
+   ========================================= */
+
+.carta {
+    width: 130px;
+    height: 100px;
+
+    background: white;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation: aparecer 1s ease;
+}
+
+/* Efecto al tocar la carta */
+.carta:active {
+    transform: scale(0.9);
+}
+
+/* Efecto al pasar el mouse */
+.carta:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   MENSAJE CON FOTO
+   ========================================= */
+
+#mensaje {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    /* FOTO DE SOFI */
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("img/sofi.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    z-index: 9999;
+
+    animation: aparecerMensaje 1s ease;
+}
+
+
+/* =========================================
+   TEXTO
+   ========================================= */
+
+.texto-mensaje {
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    max-width: 90%;
+
+    text-align: center;
+
+    text-shadow:
+        0 2px 5px black,
+        0 4px 12px rgba(0, 0, 0, 0.8);
+
+    animation: textoAparecer 1.5s ease;
+}
+
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes aparecerMensaje {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes textoAparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   CELULARES
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .carta {
+        width: 115px;
+        height: 90px;
+
+        font-size: 48px;
+    }
+
+    .texto-mensaje {
+
+        font-size: 20px;
+
+        max-width: 92%;
+
+        line-height: 1.45;
+    }
+}
