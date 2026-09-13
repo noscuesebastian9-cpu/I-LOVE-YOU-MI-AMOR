@@ -3,31 +3,105 @@ document.addEventListener("DOMContentLoaded", function () {
     const carta = document.getElementById("carta");
     const mensaje = document.getElementById("mensaje");
 
-    console.log("JavaScript cargado correctamente");
+    console.log("JavaScript funcionando");
 
-    if (!carta) {
-        console.error("NO SE ENCONTRÓ LA CARTA");
-        return;
-    }
 
-    if (!mensaje) {
-        console.error("NO SE ENCONTRÓ EL MENSAJE");
-        return;
-    }
+    /* =========================
+       ABRIR CARTA
+       ========================= */
 
     carta.addEventListener("click", function () {
 
-        console.log("¡CARTA TOCADA!");
+        console.log("Carta abierta ❤️");
 
-        // Ocultar carta
+        // Esconder carta
         carta.style.display = "none";
 
         // Mostrar mensaje
         mensaje.style.display = "flex";
 
-        // Bloquear desplazamiento
-        document.body.style.overflow = "hidden";
-
     });
+
+
+    /* =========================
+       CORAZONES Y ROSAS
+       ========================= */
+
+    const simbolos = [
+        "❤️",
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "💘",
+        "🌹"
+    ];
+
+
+    function crearElementoNeon() {
+
+        const elemento = document.createElement("div");
+
+        elemento.className = "neon-flotante";
+
+        elemento.textContent =
+            simbolos[
+                Math.floor(
+                    Math.random() * simbolos.length
+                )
+            ];
+
+
+        // Posición horizontal
+        elemento.style.left =
+            Math.random() * 100 + "vw";
+
+
+        // Tamaño
+        elemento.style.fontSize =
+            Math.random() * 20 + 20 + "px";
+
+
+        // Velocidad
+        const duracion =
+            Math.random() * 5 + 5;
+
+        elemento.style.animationDuration =
+            duracion + "s";
+
+
+        document.body.appendChild(elemento);
+
+
+        // Eliminar después
+        setTimeout(function () {
+
+            elemento.remove();
+
+        }, (duracion + 1) * 1000);
+
+    }
+
+
+    /* Crear elementos continuamente */
+
+    setInterval(function () {
+
+        crearElementoNeon();
+
+    }, 400);
+
+
+    /* Crear algunos inmediatamente */
+
+    for (let i = 0; i < 8; i++) {
+
+        setTimeout(function () {
+
+            crearElementoNeon();
+
+        }, i * 300);
+
+    }
 
 });
