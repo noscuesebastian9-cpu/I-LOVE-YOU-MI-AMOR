@@ -3,7 +3,7 @@ function mostrarMensaje() {
     const mensaje = document.getElementById("mensajeEspecial");
 
     mensaje.innerHTML =
-        "Sofía... creo que me gustas más de lo que debería ❤️‍🔥";
+        "Mi amor... eres lo mas increible que me ha pasado en la vida y no te llegas a imaginar lo mucho que me importas, te amo";
 
 }
 
