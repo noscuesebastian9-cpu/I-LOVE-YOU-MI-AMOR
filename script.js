@@ -1,156 +1,290 @@
 /* =========================================
-   ABRIR LA CARTA 💌
+   CONFIGURACIÓN GENERAL
    ========================================= */
 
-function abrirCarta() {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    // Buscar la carta
-    const carta = document.querySelector(".carta");
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
 
-    // Buscar el mensaje
-    const mensaje = document.getElementById("mensaje");
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
 
-    // =====================================
-    // OCULTAR LA CARTA
-    // =====================================
-
-    if (carta) {
-        carta.style.display = "none";
-    }
-
-
-    // =====================================
-    // MOSTRAR EL MENSAJE
-    // =====================================
-
-    if (mensaje) {
-        mensaje.style.display = "flex";
-    }
-
-
-    // =====================================
-    // EVITAR DESPLAZAMIENTO
-    // =====================================
-
-    document.body.style.overflow = "hidden";
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 /* =========================================
-   CORAZONES Y ROSAS ❤️🌹
+   CARTA 💌
    ========================================= */
 
-const simbolos = [
-    "❤️",
-    "💗",
-    "💖",
-    "💕",
-    "💓",
-    "💘",
-    "🌹"
-];
+.carta {
+    width: 130px;
+    height: 100px;
 
+    background: white;
+    border-radius: 15px;
 
-/* =========================================
-   CREAR ELEMENTO FLOTANTE
-   ========================================= */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-function crearElementoNeon() {
+    font-size: 55px;
 
-    // Crear elemento
-    const elemento = document.createElement("div");
+    cursor: pointer;
 
-    // Agregar clase CSS
-    elemento.classList.add("neon-flotante");
+    box-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493,
+        0 10px 30px rgba(0, 0, 0, 0.25);
 
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 
-    // Elegir símbolo aleatorio
-    const simbolo =
-        simbolos[Math.floor(Math.random() * simbolos.length)];
+    animation: aparecer 1s ease;
 
-    elemento.textContent = simbolo;
+    position: relative;
+    z-index: 100;
+}
 
+.carta:active {
+    transform: scale(0.9);
+}
 
-    // =====================================
-    // POSICIÓN ALEATORIA
-    // =====================================
+.carta:hover {
+    transform: scale(1.08);
 
-    elemento.style.left =
-        Math.random() * 100 + "vw";
-
-
-    // =====================================
-    // TAMAÑO ALEATORIO
-    // =====================================
-
-    const tamaño =
-        Math.random() * 20 + 20;
-
-    elemento.style.fontSize =
-        tamaño + "px";
-
-
-    // =====================================
-    // VELOCIDAD ALEATORIA
-    // =====================================
-
-    const duracion =
-        Math.random() * 5 + 5;
-
-    elemento.style.animationDuration =
-        duracion + "s";
-
-
-    // =====================================
-    // RETRASO ALEATORIO
-    // =====================================
-
-    elemento.style.animationDelay =
-        Math.random() * 1.5 + "s";
-
-
-    // =====================================
-    // AGREGAR A LA PÁGINA
-    // =====================================
-
-    document.body.appendChild(elemento);
-
-
-    // =====================================
-    // ELIMINAR DESPUÉS DE LA ANIMACIÓN
-    // =====================================
-
-    setTimeout(() => {
-
-        elemento.remove();
-
-    }, (duracion + 2) * 1000);
+    box-shadow:
+        0 0 15px #ff1493,
+        0 0 35px #ff1493,
+        0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
 
 /* =========================================
-   CREACIÓN CONTINUA
+   MENSAJE CON FOTO
    ========================================= */
 
-// Crear un nuevo corazón/rosa cada 350 ms
+#mensaje {
+    display: none;
 
-setInterval(() => {
+    position: fixed;
 
-    crearElementoNeon();
+    inset: 0;
 
-}, 350);
+    width: 100%;
+    height: 100dvh;
+
+    /* FOTO DE SOFI */
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.30),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("img/sofi.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    z-index: 50;
+
+    animation: aparecerMensaje 1s ease;
+}
 
 
 /* =========================================
-   CREAR ALGUNOS AL INICIO
+   TEXTO ❤️
    ========================================= */
 
-for (let i = 0; i < 10; i++) {
+.texto-mensaje {
 
-    setTimeout(() => {
+    color: white;
 
-        crearElementoNeon();
+    font-size: 22px;
 
-    }, i * 250);
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    max-width: 90%;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493,
+        0 2px 5px black,
+        0 4px 12px rgba(0, 0, 0, 0.8);
+
+    animation: textoAparecer 1.5s ease;
+
+    position: relative;
+
+    z-index: 60;
+}
+
+
+/* =========================================
+   CORAZONES Y ROSAS NEÓN
+   ========================================= */
+
+.neon-flotante {
+
+    position: fixed;
+
+    bottom: -60px;
+
+    pointer-events: none;
+
+    z-index: 70;
+
+    animation-name: flotarNeon;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    filter:
+        drop-shadow(0 0 5px #ff1493)
+        drop-shadow(0 0 10px #ff1493)
+        drop-shadow(0 0 20px #ff1493);
+
+    text-shadow:
+        0 0 5px #ff1493,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493,
+        0 0 35px #ff1493;
+}
+
+
+/* =========================================
+   ANIMACIÓN DE LOS CORAZONES Y ROSAS
+   ========================================= */
+
+@keyframes flotarNeon {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            translateX(30px)
+            rotate(15deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(-30px)
+            rotate(-15deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   ANIMACIONES
+   ========================================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes aparecerMensaje {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes textoAparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   CELULARES 📱
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .carta {
+        width: 115px;
+        height: 90px;
+
+        font-size: 48px;
+    }
+
+    .texto-mensaje {
+
+        font-size: 20px;
+
+        max-width: 92%;
+
+        line-height: 1.45;
+    }
+
+    .neon-flotante {
+
+        font-size: 25px;
+
+    }
 }
