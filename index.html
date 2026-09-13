@@ -2,45 +2,42 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <!-- Adaptación para celulares -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Para mi amada ❤️</title>
 
-    <!-- Conexión con CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- ================================= -->
-    <!-- CARTA INICIAL -->
-    <!-- ================================= -->
 
-    <label for="abrir" class="carta">
-    💌
-</label>
+    <!-- =================================
+         CARTA INICIAL
+         ================================= -->
 
-<input type="checkbox" id="abrir">
+    <div class="carta" onclick="abrirCarta()">
 
-<div id="mensaje">
-    <img src="img/sofi.jpg" alt="Sofi">
+        💌
 
-    <div class="texto-mensaje">
-        mi amor eres lo más lindo que me ha pasado
-        en la vida, y lo seguirás siendo te amo mi princesa
     </div>
-</div>
-    
-    <!-- ================================= -->
-    <!-- MENSAJE CON LA FOTO DE SOFI -->
-    <!-- ================================= -->
+
+
+
+    <!-- =================================
+         MENSAJE
+         ================================= -->
 
     <div id="mensaje">
-        <img src="img/sofi.jpg"
-            alt="sofi">
+
+        <img src="img/sofi.jpg" alt="Sofi">
 
         <div class="texto-mensaje">
 
@@ -52,11 +49,14 @@
     </div>
 
 
-    <!-- ================================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ================================= -->
 
- 
+    <!-- =================================
+         JAVASCRIPT
+         ================================= -->
+
+    <script src="script.js"></script>
+
+
 </body>
 
 </html>
