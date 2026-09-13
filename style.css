@@ -1,3 +1,4 @@
+```css
 /* =========================================
    CONFIGURACIÓN GENERAL
    ========================================= */
@@ -18,7 +19,6 @@ body {
     overflow: hidden;
     font-family: Arial, sans-serif;
 
-    /* Fondo inicial */
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
 
     display: flex;
@@ -47,6 +47,8 @@ body {
     cursor: pointer;
 
     box-shadow:
+        0 0 10px #ff1493,
+        0 0 25px #ff1493,
         0 10px 30px rgba(0, 0, 0, 0.25);
 
     transition:
@@ -54,18 +56,21 @@ body {
         box-shadow 0.3s ease;
 
     animation: aparecer 1s ease;
+
+    position: relative;
+    z-index: 100;
 }
 
-/* Efecto al tocar la carta */
 .carta:active {
     transform: scale(0.9);
 }
 
-/* Efecto al pasar el mouse */
 .carta:hover {
     transform: scale(1.08);
 
     box-shadow:
+        0 0 15px #ff1493,
+        0 0 35px #ff1493,
         0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
@@ -90,7 +95,7 @@ body {
             rgba(0, 0, 0, 0.30),
             rgba(0, 0, 0, 0.55)
         ),
-        url("img /sofi.jpg");
+        url("img/sofi.jpg");
 
     background-size: cover;
     background-position: center;
@@ -103,14 +108,14 @@ body {
 
     padding: 25px;
 
-    z-index: 9999;
+    z-index: 50;
 
     animation: aparecerMensaje 1s ease;
 }
 
 
 /* =========================================
-   TEXTO
+   TEXTO ❤️
    ========================================= */
 
 .texto-mensaje {
@@ -128,10 +133,87 @@ body {
     text-align: center;
 
     text-shadow:
+        0 0 5px white,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493,
         0 2px 5px black,
         0 4px 12px rgba(0, 0, 0, 0.8);
 
     animation: textoAparecer 1.5s ease;
+
+    position: relative;
+
+    z-index: 60;
+}
+
+
+/* =========================================
+   CORAZONES Y ROSAS NEÓN
+   ========================================= */
+
+.neon-flotante {
+
+    position: fixed;
+
+    bottom: -60px;
+
+    pointer-events: none;
+
+    z-index: 70;
+
+    animation-name: flotarNeon;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    filter:
+        drop-shadow(0 0 5px #ff1493)
+        drop-shadow(0 0 10px #ff1493)
+        drop-shadow(0 0 20px #ff1493);
+
+    text-shadow:
+        0 0 5px #ff1493,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493,
+        0 0 35px #ff1493;
+}
+
+
+/* =========================================
+   ANIMACIÓN DE LOS CORAZONES Y ROSAS
+   ========================================= */
+
+@keyframes flotarNeon {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            translateX(30px)
+            rotate(15deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(-30px)
+            rotate(-15deg);
+
+        opacity: 0;
+    }
 }
 
 
@@ -180,7 +262,7 @@ body {
 
 
 /* =========================================
-   CELULARES
+   CELULARES 📱
    ========================================= */
 
 @media (max-width: 600px) {
@@ -200,4 +282,11 @@ body {
 
         line-height: 1.45;
     }
+
+    .neon-flotante {
+
+        font-size: 25px;
+
+    }
 }
+```
