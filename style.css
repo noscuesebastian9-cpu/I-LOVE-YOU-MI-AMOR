@@ -18,11 +18,14 @@ body {
     overflow: hidden;
     font-family: Arial, sans-serif;
 
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background:
+        radial-gradient(circle at center, #ffb6d9 0%, #ff8fc7 40%, #d41470 100%);
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 
 
@@ -35,7 +38,8 @@ body {
     height: 100px;
 
     background: white;
-    border-radius: 15px;
+
+    border-radius: 18px;
 
     display: flex;
     align-items: center;
@@ -45,24 +49,34 @@ body {
 
     cursor: pointer;
 
+    position: relative;
+
+    z-index: 9999;
+
+    user-select: none;
+
     box-shadow:
         0 0 10px #ff1493,
         0 0 25px #ff1493,
-        0 10px 30px rgba(0, 0, 0, 0.25);
+        0 0 45px rgba(255, 20, 147, 0.8),
+        0 15px 35px rgba(0, 0, 0, 0.3);
+
+    animation: aparecer 1s ease;
 
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
-
-    animation: aparecer 1s ease;
-
-    position: relative;
-    z-index: 100;
 }
+
+
+/* Efecto al tocar */
 
 .carta:active {
-    transform: scale(0.9);
+    transform: scale(0.90);
 }
+
+
+/* Efecto al pasar el mouse */
 
 .carta:hover {
     transform: scale(1.08);
@@ -70,7 +84,17 @@ body {
     box-shadow:
         0 0 15px #ff1493,
         0 0 35px #ff1493,
-        0 15px 40px rgba(0, 0, 0, 0.35);
+        0 0 60px #ff1493,
+        0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   CHECKBOX OCULTO
+   ========================================= */
+
+#abrir {
+    display: none;
 }
 
 
@@ -79,6 +103,7 @@ body {
    ========================================= */
 
 #mensaje {
+
     display: none;
 
     position: fixed;
@@ -86,18 +111,20 @@ body {
     inset: 0;
 
     width: 100%;
+    height: 100vh;
     height: 100dvh;
 
-    /* FOTO DE SOFI */
     background-image:
         linear-gradient(
             rgba(0, 0, 0, 0.30),
-            rgba(0, 0, 0, 0.55)
+            rgba(0, 0, 0, 0.60)
         ),
         url("img/sofi.jpg");
 
     background-size: cover;
+
     background-position: center;
+
     background-repeat: no-repeat;
 
     align-items: center;
@@ -107,9 +134,40 @@ body {
 
     padding: 25px;
 
-    z-index: 50;
+    z-index: 100;
 
     animation: aparecerMensaje 1s ease;
+}
+
+
+/* =========================================
+   ABRIR CARTA
+   ========================================= */
+
+#abrir:checked ~ #mensaje {
+    display: flex;
+}
+
+
+/* Ocultar la carta cuando se abre */
+
+#abrir:checked ~ .carta {
+    display: none;
+}
+
+
+/* =========================================
+   IMAGEN
+   ========================================= */
+
+/*
+   La foto ya se utiliza como fondo.
+   Ocultamos la imagen HTML para evitar
+   que aparezca una segunda foto encima.
+*/
+
+#mensaje img {
+    display: none;
 }
 
 
@@ -127,22 +185,26 @@ body {
 
     line-height: 1.5;
 
-    max-width: 90%;
+    width: 100%;
+
+    max-width: 500px;
 
     text-align: center;
+
+    padding: 20px;
 
     text-shadow:
         0 0 5px white,
         0 0 10px #ff1493,
         0 0 20px #ff1493,
-        0 2px 5px black,
-        0 4px 12px rgba(0, 0, 0, 0.8);
-
-    animation: textoAparecer 1.5s ease;
+        0 0 35px #ff1493,
+        0 3px 8px black;
 
     position: relative;
 
-    z-index: 60;
+    z-index: 500;
+
+    animation: textoAparecer 1.5s ease;
 }
 
 
@@ -158,16 +220,19 @@ body {
 
     pointer-events: none;
 
-    z-index: 70;
+    z-index: 600;
 
     animation-name: flotarNeon;
+
     animation-timing-function: linear;
+
     animation-fill-mode: forwards;
 
     filter:
         drop-shadow(0 0 5px #ff1493)
         drop-shadow(0 0 10px #ff1493)
-        drop-shadow(0 0 20px #ff1493);
+        drop-shadow(0 0 20px #ff1493)
+        drop-shadow(0 0 30px #ff1493);
 
     text-shadow:
         0 0 5px #ff1493,
@@ -178,12 +243,13 @@ body {
 
 
 /* =========================================
-   ANIMACIÓN DE LOS CORAZONES Y ROSAS
+   ANIMACIÓN CORAZONES / ROSAS
    ========================================= */
 
 @keyframes flotarNeon {
 
     0% {
+
         transform:
             translateY(0)
             translateX(0)
@@ -193,22 +259,25 @@ body {
     }
 
     10% {
+
         opacity: 1;
     }
 
     50% {
+
         transform:
             translateY(-50vh)
-            translateX(30px)
+            translateX(35px)
             rotate(15deg);
 
         opacity: 1;
     }
 
     100% {
+
         transform:
-            translateY(-115vh)
-            translateX(-30px)
+            translateY(-120vh)
+            translateX(-35px)
             rotate(-15deg);
 
         opacity: 0;
@@ -217,45 +286,67 @@ body {
 
 
 /* =========================================
-   ANIMACIONES
+   ANIMACIÓN CARTA
    ========================================= */
 
 @keyframes aparecer {
 
     from {
+
         opacity: 0;
-        transform: scale(0.5);
+
+        transform:
+            scale(0.5);
     }
 
     to {
+
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
 }
 
+
+/* =========================================
+   ANIMACIÓN DEL MENSAJE
+   ========================================= */
 
 @keyframes aparecerMensaje {
 
     from {
+
         opacity: 0;
     }
 
     to {
+
         opacity: 1;
     }
 }
 
 
+/* =========================================
+   ANIMACIÓN DEL TEXTO
+   ========================================= */
+
 @keyframes textoAparecer {
 
     from {
+
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+            translateY(30px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
@@ -267,11 +358,16 @@ body {
 @media (max-width: 600px) {
 
     .carta {
+
         width: 115px;
+
         height: 90px;
 
         font-size: 48px;
+
+        border-radius: 16px;
     }
+
 
     .texto-mensaje {
 
@@ -280,12 +376,38 @@ body {
         max-width: 92%;
 
         line-height: 1.45;
+
+        padding: 15px;
     }
+
 
     .neon-flotante {
 
         font-size: 25px;
-
     }
 }
-```
+
+
+/* =========================================
+   CELULARES MUY PEQUEÑOS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .carta {
+
+        width: 105px;
+
+        height: 82px;
+
+        font-size: 43px;
+    }
+
+
+    .texto-mensaje {
+
+        font-size: 18px;
+
+        line-height: 1.4;
+    }
+}
