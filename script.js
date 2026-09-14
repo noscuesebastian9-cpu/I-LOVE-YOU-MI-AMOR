@@ -121,3 +121,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+.pregunta-amor h2 {
+        font-size: 19px;
+    }
+
+    .pregunta-amor button {
+        font-size: 14px;
+        padding: 9px 18px;
+    }
+
+    #respuesta-amor {
+        font-size: 16px;
+    }
