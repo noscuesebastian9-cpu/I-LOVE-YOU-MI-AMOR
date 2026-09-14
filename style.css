@@ -324,3 +324,76 @@ body {
         font-size: 19px;
     }
 }
+/* ==============================
+   DINÁMICA ¿CUÁNTO ME AMAS?
+============================== */
+
+.pregunta-amor {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pregunta-amor h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493;
+}
+
+.pregunta-amor button {
+    border: none;
+    border-radius: 25px;
+
+    padding: 10px 20px;
+
+    background: rgba(255, 20, 147, 0.9);
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 8px #ff1493,
+        0 0 18px #ff1493;
+
+    transition: transform 0.2s ease;
+}
+
+.pregunta-amor button:active {
+    transform: scale(0.92);
+}
+
+#respuesta-amor {
+    margin-top: 15px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 10px #ff1493,
+        0 0 20px #ff1493;
+
+    animation: textoAparecer 0.8s ease;
+}
+.pregunta-amor h2 {
+        font-size: 19px;
+    }
+
+    .pregunta-amor button {
+        font-size: 14px;
+        padding: 9px 18px;
+    }
+
+    #respuesta-amor {
+        font-size: 16px;
+    }
