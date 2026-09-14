@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         crearDecoracion();
 
-    }, 350);
+    }, 700);
 
 
     /* ==============================
