@@ -121,3 +121,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+// ==============================
+// RESPUESTA ¿CUÁNTO ME AMAS?
+// ==============================
+
+function respuestaAmor() {
+
+    const respuesta = document.getElementById("respuesta-amor");
+
+    respuesta.innerHTML =
+        "🥰 Sabía que me amabas...<br>" +
+        "pero yo te amo muchísimo más ❤️❤️❤️";
+
+    for (let i = 0; i < 15; i++) {
+
+        const corazon = document.createElement("div");
+
+        corazon.className = "decoracion";
+        corazon.textContent = "❤️";
+
+        corazon.style.left =
+            Math.random() * 100 + "vw";
+
+        corazon.style.fontSize =
+            (18 + Math.random() * 20) + "px";
+
+        corazon.style.animationDuration =
+            (3 + Math.random() * 2) + "s";
+
+        document
+            .getElementById("decoraciones")
+            .appendChild(corazon);
+
+        setTimeout(function () {
+            corazon.remove();
+        }, 5000);
+    }
+}
